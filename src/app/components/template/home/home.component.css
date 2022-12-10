@@ -1,22 +1,57 @@
 .container {
-    height: 85%;
+  height: 85%;
 }
 
 .sidenav {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
-table, td, th{
-    border-collapse: collapse;
-    border: 2px solid black;
-  }
+table,
+td,
+th {
+  border-collapse: collapse;
+  border: 2px solid black;
+}
 
-  table{
-    margin: auto;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    border-radius: 20px;
-  }
+table {
+  margin: auto;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: large;
+  border-radius: 20px;
+  margin-left: 100px;
+  text-align: center;
+}
 
-  td{
-    padding: 5px;
-  }
+input {
+  width: 200px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: large;
+}
+
+td {
+  padding: 5px;
+}
+
+button {
+  width: 100px;
+  height: 50px;
+  font-size: medium;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.salvar {
+  background-color: rgb(93, 202, 93);
+}
+
+.excluir {
+  background-color: rgba(255, 0, 0, 0.671);
+}
+
+.editar {
+  background-color: rgb(228, 195, 89);
+}
+
+h1 {
+  margin-left: 120px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

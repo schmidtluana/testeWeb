@@ -1,44 +1,46 @@
+<div>
+  <h1 class="alerta alert" id="alerta">{{ alerta }}</h1>
 
-  <div>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Departamento</th>
-            <th>Endereço</th>
-            <th>Email</th>
-        </tr>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Departamento</th>
+      <th>Endereço</th>
+      <th>Email</th>
+    </tr>
 
-        <tr *ngfor="let linha of vetPessoas">
-            <td>{{linha.id}}</td>
-            <ng-container *ngIf="!linha.editando; else elseTemplate">
-                <td>{{linha.nome}}</td>
-                <td>{{linha.departamento}}</td>
-                <td>{{linha.endereco}}</td>
-                <td>{{linha.email}}</td>
-            </ng-container>
+    <tr *ngFor="let registro of vetPessoas">
+      <td>{{ registro.id }}</td>
+      <ng-container *ngIf="!registro.editando; else elseTemplate">
+        <td>{{ registro.nome }}</td>
+        <td>{{ registro.departamento }}</td>
+        <td>{{ registro.endereco }}</td>
+        <td>{{ registro.email }}</td>
+      </ng-container>
 
-            <ng-template #elseTemplate>
-                <td><input type="text" [(ngModel)]="linha.nome"></td>
-                <td><input type="text" [(ngModel)]="linha.departamento"></td>
-                <td><input type="text" [(ngModel)]="linha.endereco"></td>
-                <td><input type="text" [(ngModel)]="linha.email"></td>
-            </ng-template>
+      <ng-template #elseTemplate>
+        <td><input type="text" [(ngModel)]="registro.nome" /></td>
+        <td><input type="text" [(ngModel)]="registro.departamento" /></td>
+        <td><input type="text" [(ngModel)]="registro.endereco" /></td>
+        <td><input type="text" [(ngModel)]="registro.email" /></td>
+      </ng-template>
 
-            <td>
-                <ng-container *ngIf="!linha.editando; else elseTemplateBotao">
-                    <button (click)="habilitarEdicaoLine(linha)">Editar</button>
-                </ng-container>
-                
-                <ng-template #elseTemplateBotao>
-                    <button (click)="updateLine(linha)">Salvar</button>
-                </ng-template>
-                
-            
-                <button (click)="deleteLine(linha.id)">Excluir</button>
+      <td>
+        <ng-container>
+          <button class="editar" (click)="podeEditarRegistro(registro)">
+            Editar
+          </button>
+          <br/>
+        </ng-container>
 
-            </td>           
-            
-        </tr>
-    </table>
-  </div>
+        <button class="salvar" (click)="atualizarRegistro(registro)">Salvar</button>
+        <br/>
+
+        <button class="excluir" (click)="removerRegistro(registro.id)">
+          Excluir
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

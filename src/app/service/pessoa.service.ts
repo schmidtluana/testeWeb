@@ -10,15 +10,16 @@ export class PessoaService {
 
   constructor(private http:HttpClient) { }
 
-  selecionar() {
+  buscarRegistros() {
     return this.http.get<Pessoa[]>('https://bu.furb.br/mcardoso/progWeb/apiRestAval.php/cadastro');
   }
 
-  deleteLine(id:number) {
+  remover(id:number) {
     return this.http.delete('https://bu.furb.br/mcardoso/progWeb/apiRestAval.php/cadastro/' + id);
   }
 
-  updateLine(id:number, f:Pessoa) {
+  
+  atualizarRegistro(id:number, f:Pessoa) {
     return this.http.put<Pessoa>('https://bu.furb.br/mcardoso/progWeb/apiRestAval.php/cadastro/' + id, f);
   }
 
