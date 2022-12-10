@@ -1,0 +1,22 @@
+.container {
+    height: 85%;
+}
+
+.sidenav {
+    background-color: lightgray;
+}
+
+table, td, th{
+    border-collapse: collapse;
+    border: 2px solid black;
+  }
+
+  table{
+    margin: auto;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 20px;
+  }
+
+  td{
+    padding: 5px;
+  }

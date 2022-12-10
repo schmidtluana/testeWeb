@@ -1,0 +1,44 @@
+
+  <div>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Departamento</th>
+            <th>Endereço</th>
+            <th>Email</th>
+        </tr>
+
+        <tr *ngfor="let linha of vetPessoas">
+            <td>{{linha.id}}</td>
+            <ng-container *ngIf="!linha.editando; else elseTemplate">
+                <td>{{linha.nome}}</td>
+                <td>{{linha.departamento}}</td>
+                <td>{{linha.endereco}}</td>
+                <td>{{linha.email}}</td>
+            </ng-container>
+
+            <ng-template #elseTemplate>
+                <td><input type="text" [(ngModel)]="linha.nome"></td>
+                <td><input type="text" [(ngModel)]="linha.departamento"></td>
+                <td><input type="text" [(ngModel)]="linha.endereco"></td>
+                <td><input type="text" [(ngModel)]="linha.email"></td>
+            </ng-template>
+
+            <td>
+                <ng-container *ngIf="!linha.editando; else elseTemplateBotao">
+                    <button (click)="habilitarEdicaoLine(linha)">Editar</button>
+                </ng-container>
+                
+                <ng-template #elseTemplateBotao>
+                    <button (click)="updateLine(linha)">Salvar</button>
+                </ng-template>
+                
+            
+                <button (click)="deleteLine(linha.id)">Excluir</button>
+
+            </td>           
+            
+        </tr>
+    </table>
+  </div>
