@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AlbumService } from './album.service';
+import { AlbumService } from './pessoa.service';
 
 describe('AlbumService', () => {
   let service: AlbumService;

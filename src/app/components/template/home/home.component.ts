@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Pessoa } from '../../../model/pessoa';
 import { JsonPipe } from '@angular/common';
+import { PessoaService } from '../../../service/pessoa.service';
+
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,14 @@ import { JsonPipe } from '@angular/common';
 })
 
 
+
+
 export class HomeComponent implements OnInit {
-  vetPessoas: Pessoa[] = this.fazerRequisicao();
+
+  constructor(private servico:PessoaService) {}
+
+
+  vetPessoas: Pessoa[] = [];
   vPessoas: Pessoa = {
     id: 0,
     nome: "",
@@ -20,20 +28,31 @@ export class HomeComponent implements OnInit {
     editando:false
   }
 
+  ngOnInit() {
+    this.selecionarTudo();
+  }
 
-  fazerRequisicao() : any {
-    fetch('https://bu.furb.br/mcardoso/progWeb/apiRestAval.php/cadastro',
-    {
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-      method: 'GET',
-    })
-    .then(response => response.json())
-    .then(json => {
-      this.vetPessoas = [...json];
+  selecionarTudo():void {
+    this.servico.selecionar()
+    .subscribe({
+      next: retorno => this.vetPessoas = retorno
     });
   }
+
+
+  // fazerRequisicao() : any {
+  //   fetch('https://bu.furb.br/mcardoso/progWeb/apiRestAval.php/cadastro',
+  //   {
+  //     headers: {
+  //       'Content-type': 'application/json; charset=UTF-8',
+  //     },
+  //     method: 'GET',
+  //   })
+  //   .then(response => response.json())
+  //   .then(json => {
+  //     this.vetPessoas = [...json];
+  //   });
+  // }
 
 
 
@@ -82,9 +101,9 @@ deleteLine(pessoaId: number): any {
 }
 
 
-ngOnInit(): void {
-  throw new Error('Método não implementado.')
-}
+// ngOnInit(): void {
+//   throw new Error('Método não implementado.')
+// }
 
 
 }
